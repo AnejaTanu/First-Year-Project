@@ -1,0 +1,70 @@
+Working of the Project
+### Classes and Methods
+- **Class `Database`:**
+  - Manages user information with three private members:
+    - `name` (string): Stores the name of the user.
+    - `user_name` (string): Stores the username.
+    - `password` (double): Stores the password (should ideally be string or hashed).
+  
+  - **Methods in `Database`:**
+    - `void get()`: 
+      - Collects user data (name, username, and password) from the user via input.
+    - `string user()`: 
+      - Returns the username.
+    - `string nam()`: 
+      - Returns the user's name.
+    - `double pass()`: 
+      - Returns the password.
+    - `void put()`: 
+      - Displays the user details stored in the `database.txt` file (name and username).
+
+### Global Objects
+- `Database d`: 
+  - An object of the `Database` class used for storing and handling user information.
+- `fstream f1`: 
+  - Used for file operations (read/write) on the `database.txt` file.
+
+### Functions
+- **`void finduser(string user)`**:
+  - Searches for a user in the `database.txt` file by username and displays their details if found.
+
+- **`void insertdata()`**:
+  - Prompts the user for details, then writes the collected data to the `database.txt` file.
+  - Data is appended in binary mode.
+
+- **`void update()`**:
+  - Searches for a record based on the password.
+  - If the password matches, the corresponding user data is updated in the file.
+
+- **`void del()`**:
+  - Deletes a record based on the password.
+  - A temporary file `temp.txt` is used to store data except for the user to be deleted.
+  - The original file is then replaced by the temporary file after deletion.
+
+### `main()` function:
+- Presents a menu-driven interface to the user.
+- Provides six operations the user can choose from:
+  1. **Get Data (`case 1`)**: 
+     - Takes input for a user and writes the data to `database.txt`.
+  2. **Display Data (`case 2`)**: 
+     - Displays the details of a user by reading from `database.txt`.
+  3. **Insert Data (`case 3`)**: 
+     - Calls `insertdata()` to insert new user data.
+  4. **Update Data (`case 4`)**: 
+     - Calls `update()` to search and update user details based on the password.
+  5. **Delete Data (`case 5`)**: 
+     - Calls `del()` to delete a user by password.
+  6. **Find User (`case 6`)**: 
+     - Calls `finduser()` to find and display a user by username.
+
+- **User Interaction Loop:**
+  - After every operation, the program asks the user if they want to continue (`y` or `n`).
+  - If the user enters 'y' or 'Y', the loop continues; otherwise, the program terminates.
+
+### Key Points:
+- File operations:
+  - User details are written and read from a file `database.txt` in binary mode.
+  - For deletion, a temporary file `temp.txt` is used.
+  
+- Basic validation:
+  - User search, update, and delete operations are done by comparing either the username or password.
